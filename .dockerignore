@@ -1,0 +1,15 @@
+**/.git
+.cache/*
+.venv/*
+**/__pycache__
+*.pyc
+.vscode/*
+*.md
+**/__pycache__
+**/upload
+**/download
+*.zip
+**/doc
+**/log
+**/output
+**/tmp

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1></h1>
+    <form action="" method="post" enctype="multipart/form-data" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.datafile58.label }} {{ form.datafile58(size=64) }}<br>
+            {% for error in form.datafile58.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            {{ form.datafile76.label }}
+            {{ form.datafile76(size=64) }}<br>
+            {% for error in form.datafile76.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            {{ form.datafilePDN.label }}
+            {{ form.datafilePDN(size=64) }}<br>
+            {% for error in form.datafilePDN.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            {{ form.datafileIRKOM.label }}
+            {{ form.datafileIRKOM(size=64) }}<br>
+            {% for error in form.datafileIRKOM.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+ {% endblock %}
+  

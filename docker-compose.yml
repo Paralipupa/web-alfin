@@ -1,0 +1,25 @@
+version: "3"
+
+networks:
+  nginx-proxy:
+    external: true
+
+services:
+  parser:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: gis_parser:latest
+    container_name: parser
+    command: bash -c "bash ./boot.sh; sleep 1"
+    restart: always
+    env_file:
+      - ./.env
+    networks: 
+        - nginx-proxy
+    volumes:
+      - ./:/app
+    # ports:
+    #   - "5000:5000"
+
+
