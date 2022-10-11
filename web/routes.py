@@ -22,7 +22,7 @@ def index():
     form = UploadForm()
     if request.method == 'POST' and form.validate_on_submit():
         return __report()
-    return render_template('upload.html', title='Парсер', form=form)
+    return render_template('upload.html', title='Отчеты', form=form)
 
 def __report():
     files = __upload_file()

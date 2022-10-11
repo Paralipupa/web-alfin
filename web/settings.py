@@ -4,5 +4,5 @@ from flask_httpauth import HTTPBasicAuth
 auth = HTTPBasicAuth()
 
 users = {
-    "robot-ui": generate_password_hash("raideff86reps$"),
+    "oksana": generate_password_hash("javajas345"),
 }

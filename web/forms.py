@@ -9,9 +9,8 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Sign In')
 
 class UploadForm(FlaskForm):
-    # inn = StringField('ИНН')
-    datafile58 = FileField('сч.58   ', validators=[DataRequired()])
-    datafile76 = FileField('сч.76   ', validators=[DataRequired()])
-    datafilePDN = FileField('PDN   ', validators=[DataRequired()])
-    datafileIRKOM = FileField('IRKOM', validators=[DataRequired()])
+    datafile58 = FileField('файл из 1С сч.58.03   ', validators=[DataRequired()])
+    datafile76 = FileField('файл из 1С сч.сч.76   ', validators=[DataRequired()])
+    datafilePDN = FileField('файл c ПДН клиентов   ', validators=[DataRequired()])
+    datafileIRKOM = FileField('файл выгрузки (Ирком)', validators=[DataRequired()])
     submit = SubmitField('Пуск')
