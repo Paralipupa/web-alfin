@@ -3,7 +3,7 @@ from flask import Flask
 
 from config import Config
 
-sys.path.append('parser')
+sys.path.append('alfin')
 app = Flask(__name__)
 app.config.from_object(Config)
 
