@@ -16,7 +16,20 @@
                     <td>
                         {% for error in form.datafile58.errors %}
                         <span style="color: red;">[{{ error }}]</span>
-                        {% endfor %}            
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ form.datafile58PDN.label }}
+                    </td>
+                    <td>
+                        {{ form.datafile58PDN(size=64) }}
+                    </td>
+                    <td>
+                        {% for error in form.datafile58PDN.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
                     </td>
                 </tr>
                 <tr>
@@ -67,4 +80,3 @@
         </p>
     </form>
  {% endblock %}
-  

@@ -27,13 +27,15 @@ def index():
 def __report():
     files = __upload_file()
     if files:
-        report = Calc(*files)
+        report = Calc(files)
         report.read()
+        report.report_rezerves()
+        report.report_weighted_average()
         return __download_file(report.write())
     return redirect('/')
 
 def __upload_file() -> str:
-    names = ['datafile58','datafile76','datafilePDN','datafileIRKOM',]
+    names = ['datafile58','datafile58PDN' , 'datafile76','datafilePDN','datafileIRKOM',]
     files = []
     if request.files:
         os.makedirs(app.config['UPLOAD_DIR'], exist_ok=True)
