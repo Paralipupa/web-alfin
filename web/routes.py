@@ -20,7 +20,7 @@ def verify_password(username, password):
 @auth.login_required
 def index():
     form = UploadForm()
-    if request.method == 'POST' and form.validate_on_submit():
+    if request.method == 'POST': # and form.validate_on_submit():
         return __report()
     return render_template('upload.html', title='Отчеты', form=form)
 
@@ -35,18 +35,32 @@ def __report():
     return redirect('/')
 
 def __upload_file() -> str:
-    names = ['datafile58','datafile58PDN' , 'datafile76','datafilePDN','datafileIRKOM',]
     files = []
-    if request.files:
+    if request.files:        
         os.makedirs(app.config['UPLOAD_DIR'], exist_ok=True)
-        for name in names:
-            if name in request.files:
-                file = request.files[name]
+        for name in request.files:
+            file = request.files[name]
+            if file.filename:
                 filename = pathlib.Path(
                     app.config['UPLOAD_DIR'], secure_filename(f'{name}_{file.filename}'))
                 file.save(filename)
                 files.append(str(filename))
     return files
+
+# def __upload_file() -> str:
+#     names = ['datafile58','datafile58PDN' , 'datafile76','datafilePDN','datafileIRKOM',]
+#     files = []
+#     if request.files:
+#         os.makedirs(app.config['UPLOAD_DIR'], exist_ok=True)
+#         for name in names:
+#             if name in request.files:
+#                 file = request.files[name]
+#                 if file.filename:
+#                     filename = pathlib.Path(
+#                         app.config['UPLOAD_DIR'], secure_filename(f'{name}_{file.filename}'))
+#                     file.save(filename)
+#                     files.append(str(filename))
+#     return files
 
 def __download_file(filename: str):
     return send_from_directory(str(os.path.join(app.config['BASE_DIR'], app.config['DOWNLOAD_DIR'])), os.path.basename(filename), as_attachment=True)

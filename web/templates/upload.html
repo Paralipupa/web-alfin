@@ -7,30 +7,42 @@
         <p>
             <table>
                 <tr>
+                    <th colspan="2">
+                        Основная
+                    </th>
+                </tr>
+                <tr>
                     <td>
-                        {{ form.datafile58.label }}
+                        {{ form.datafile58WA.label }}
                     </td>
                     <td>
-                        {{ form.datafile58(size=64) }}
+                        {{ form.datafile58WA(size=64) }}
                     </td>
                     <td>
-                        {% for error in form.datafile58.errors %}
+                        {% for error in form.datafile58WA.errors %}
                         <span style="color: red;">[{{ error }}]</span>
                         {% endfor %}
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        {{ form.datafile58PDN.label }}
+                        {{ form.datafile58RES.label }}
                     </td>
                     <td>
-                        {{ form.datafile58PDN(size=64) }}
+                        {{ form.datafile58RES(size=64) }}
                     </td>
                     <td>
-                        {% for error in form.datafile58PDN.errors %}
+                        {% for error in form.datafile58RES.errors %}
                         <span style="color: red;">[{{ error }}]</span>
                         {% endfor %}
                     </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th colspan="2">
+                        Дополнительная
+                    </th>
                 </tr>
                 <tr>
                     <td>
