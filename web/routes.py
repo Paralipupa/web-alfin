@@ -21,13 +21,13 @@ def verify_password(username, password):
 def index():
     form = UploadForm()
     if request.method == 'POST': # and form.validate_on_submit():
-        return __report()
+        return __report(form.is_archi.data)
     return render_template('upload.html', title='Отчеты', form=form)
 
-def __report():
+def __report(is_archi: bool = False):
     files = __upload_file()
     if files:
-        report = Calc(files)
+        report = Calc(files, is_archi)
         report.read()
         report.report_rezerves()
         report.report_weighted_average()
