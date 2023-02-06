@@ -29,7 +29,7 @@ def __report(is_archi: bool = False):
     if files:
         report = Calc(files, is_archi)
         report.read()
-        report.report_rezerves()
+        report.report_kategoria()
         report.report_weighted_average()
         return __download_file(report.write())
     return redirect('/')
