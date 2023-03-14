@@ -10,6 +10,7 @@ from web.forms import UploadForm
 from alfin.module.calculate import Calc
 from .settings import *
 
+
 @auth.verify_password
 def verify_password(username, password):
     if username in users and \
@@ -27,11 +28,8 @@ def index():
 def __report(is_archi: bool = False):
     files = __upload_file()
     if files:
-        report = Calc(files, is_archi)
-        report.read()
-        report.report_kategoria()
-        report.report_weighted_average()
-        return __download_file(report.write())
+        report = Calc(files, is_archi)        
+        return __download_file(report.run())
     return redirect('/')
 
 def __upload_file() -> str:
@@ -47,21 +45,6 @@ def __upload_file() -> str:
                 files.append(str(filename))
     return files
 
-# def __upload_file() -> str:
-#     names = ['datafile58','datafile58PDN' , 'datafile76','datafilePDN','datafileIRKOM',]
-#     files = []
-#     if request.files:
-#         os.makedirs(app.config['UPLOAD_DIR'], exist_ok=True)
-#         for name in names:
-#             if name in request.files:
-#                 file = request.files[name]
-#                 if file.filename:
-#                     filename = pathlib.Path(
-#                         app.config['UPLOAD_DIR'], secure_filename(f'{name}_{file.filename}'))
-#                     file.save(filename)
-#                     files.append(str(filename))
-#     return files
-
 def __download_file(filename: str):
-    return send_from_directory(str(os.path.join(app.config['BASE_DIR'], app.config['DOWNLOAD_DIR'])), os.path.basename(filename), as_attachment=True)
+    return send_from_directory(os.path.dirname(filename), os.path.basename(filename), as_attachment=True)
 
