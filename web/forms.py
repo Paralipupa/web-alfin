@@ -14,5 +14,5 @@ class UploadForm(FlaskForm):
     datafile76 = FileField('файл из 1С сч.сч.76   ', validators=[DataRequired()])
     datafilePDN = FileField('файл c ПДН клиентов   ', validators=[DataRequired()])
     datafileIRKOM = FileField('файл выгрузки (Ирком)', validators=[DataRequired()])
-    is_archi = BooleanField('данные из Archicredit (ставка,тариф,срок)')
-    submit = SubmitField('Резервы')
+    is_archi = BooleanField('данные из Archicredit (ставка,тариф,срок)', default=True)
+    submit = SubmitField('Запуск')
