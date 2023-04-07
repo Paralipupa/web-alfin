@@ -7,7 +7,7 @@ from shutil import rmtree
 from flask import render_template, flash, redirect, request, send_from_directory
 from web import app
 from web.forms import UploadForm
-from alfin.module.calculate import Calc
+from alfin.module.calculate_async import Calc
 from .settings import *
 
 
