@@ -85,6 +85,19 @@
                 </tr>
                 <tr>
                     <td>
+                        {{ form.datafiles.label }}
+                    </td>
+                    <td>
+                        <input type="file" name="file" multiple />
+                    </td>
+                    <td>
+                        {% for error in form.datafiles.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         {{ form.is_archi}}
                     </td>
                     <td>

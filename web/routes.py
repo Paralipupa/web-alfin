@@ -23,7 +23,7 @@ def index():
     form = UploadForm()
     if request.method == 'POST': # and form.validate_on_submit():
         return __report(form.is_archi.data)
-    return render_template('upload.html', title='Отчеты', form=form)
+    return render_template('upload_multi.html', title='Отчеты', form=form)
 
 def __report(is_archi: bool = False):
     files = __upload_file()
@@ -36,11 +36,10 @@ def __upload_file() -> str:
     files = []
     if request.files:        
         os.makedirs(app.config['UPLOAD_DIR'], exist_ok=True)
-        for name in request.files:
-            file = request.files[name]
+        for index, file in enumerate(request.files.getlist('file')):
             if file.filename:
                 filename = pathlib.Path(
-                    app.config['UPLOAD_DIR'], secure_filename(f'{name}_{file.filename}'))
+                    app.config['UPLOAD_DIR'], secure_filename(f'{index}_{file.filename}'))
                 file.save(filename)
                 files.append(str(filename))
     return files

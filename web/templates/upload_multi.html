@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Расчет</h1>
+  <p>Выберите необходимые файлы для расчета</p>
+  <form action="" method="POST" enctype="multipart/form-data">
+    <div>{{ form.hidden_tag() }}</div>
+    <div>
+      <input type="file" name="file" multiple />
+    </div><br/>
+    <div>
+      <input type="submit" value="Выполнить" />
+      {{ form.is_archi }}(Archi)
+    </div>
+  </form>
+{% endblock %}

@@ -9,10 +9,11 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Sign In')
 
 class UploadForm(FlaskForm):
-    datafile58WA = FileField('файл из 1С сч.58.03(ср.вз.)  ', validators=[DataRequired()])
-    datafile58RES = FileField('файл из 1С сч.58.03(резерв) ', validators=[DataRequired()])
-    datafile76 = FileField('файл из 1С сч.сч.76   ', validators=[DataRequired()])
-    datafilePDN = FileField('файл c ПДН клиентов   ', validators=[DataRequired()])
-    datafileIRKOM = FileField('файл выгрузки (Ирком)', validators=[DataRequired()])
+    datafile58WA = FileField('сч.58.03', validators=[DataRequired()])
+    datafile58RES = FileField('', validators=[DataRequired()])
+    datafile76 = FileField('', validators=[DataRequired()])
+    datafilePDN = FileField('', validators=[DataRequired()])
+    datafileIRKOM = FileField('', validators=[DataRequired()])
+    datafiles = FileField('', validators=[DataRequired()])
     is_archi = BooleanField('данные из Archicredit (ставка,тариф,срок)', default=True)
     submit = SubmitField('Запуск')
