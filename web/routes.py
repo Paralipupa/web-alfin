@@ -1,4 +1,6 @@
 import os, pathlib, re
+from wtforms import DateField
+from datetime import datetime
 from faulthandler import disable
 from genericpath import isdir
 from werkzeug.security import check_password_hash
@@ -20,21 +22,22 @@ def verify_password(username, password):
 @app.route('/', methods=['GET', 'POST'])
 @auth.login_required
 def index():
-    form = UploadForm()
+    form : UploadForm = UploadForm()
     if request.method == 'POST': # and form.validate_on_submit():
-        return __report(form.is_archi.data)
+        return __report(form.date_purpose, form.is_archi.data)
     return render_template('upload_multi.html', title='Отчеты', form=form)
 
-def __report(is_archi: bool = False):
+def __report(date_purpose: DateField, is_archi: bool = False):
     files = __upload_file()
     if files:
-        report = Calc(files, is_archi)        
+        date_p = datetime.strptime(date_purpose.raw_data[0],"%Y-%m-%d").date()
+        report = Calc(files,  date_p, is_archi)
         return __download_file(report.run())
     return redirect('/')
 
 def __upload_file() -> str:
     files = []
-    if request.files:        
+    if request.files:
         os.makedirs(app.config['UPLOAD_DIR'], exist_ok=True)
         for index, file in enumerate(request.files.getlist('file')):
             if file.filename:
