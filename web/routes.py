@@ -30,7 +30,10 @@ def index():
 def __report(date_purpose: DateField, is_archi: bool = False):
     files = __upload_file()
     if files:
-        date_p = datetime.strptime(date_purpose.raw_data[0],"%Y-%m-%d").date()
+        if date_purpose.raw_data[0]:
+            date_p = datetime.strptime(date_purpose.raw_data[0],"%Y-%m-%d").date()
+        else:
+            date_p = None            
         report = Calc(files,  date_p, is_archi)
         return __download_file(report.run())
     return redirect('/')

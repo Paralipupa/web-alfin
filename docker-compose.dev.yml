@@ -8,10 +8,10 @@ services:
   web:
     build: 
       context: .
-      dockerfile: Dockerfile
-    image: web_alfin:latest
-    container_name: alfin
-    command: bash -c "bash ./boot.sh; sleep 1"
+      dockerfile: Dockerfile.dev
+    image: web_alfin:dev
+    container_name: alfin_dev
+    command: python -m flask run --host localhost --port 5000
     restart: always
     env_file:
       - ./.env

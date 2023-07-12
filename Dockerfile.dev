@@ -37,6 +37,6 @@ USER web
 # RUN chown -R web:web ./
 # RUN chmod +x boot.sh
 
-# ENV FLASK_APP web.py
+ENV FLASK_APP web.py
 EXPOSE 5000
-ENTRYPOINT ["./boot.sh"]
+# CMD python -m flask run --host localhost --port 5000
