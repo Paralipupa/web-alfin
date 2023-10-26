@@ -9,7 +9,7 @@ WORKDIR /app
 # RUN chmod +x venv/bin/activate
 
 COPY Pipfile Pipfile.lock ./
-RUN apt-get update
+# RUN apt-get update/
 RUN apt-get update \
  && apt-get install unixodbc -y \
  && apt-get install unixodbc-dev -y \
@@ -20,7 +20,7 @@ RUN apt-get update \
 
 # RUN apt-get install -y build-essential libpq-dev libxml2 libxml2-dev libxslt1.1 libxslt1-dev libffi-dev libz-dev
 
-RUN python -m pip install --upgrade pip
+# RUN python -m pip install --upgrade pip
 RUN pip install -U pip
 RUN pip install pipenv
 RUN pipenv install --system --dev
@@ -28,9 +28,9 @@ RUN pipenv install --system --dev
 # RUN pip install -r requirements.txt
 RUN pip install gunicorn
 
-COPY web web
-COPY alfin alfin
-COPY boot.sh web.py config.py ./
+# COPY web web
+# COPY alfin alfin
+# COPY boot.sh web.py config.py ./
 
 USER web
 
