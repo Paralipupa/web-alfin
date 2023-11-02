@@ -51,5 +51,7 @@ def __upload_file() -> str:
     return files
 
 def __download_file(filename: str):
+    if filename is None:
+        return redirect('/')
     return send_from_directory(os.path.dirname(filename), os.path.basename(filename), as_attachment=True)
 
