@@ -8,3 +8,5 @@ output/*
 *.xls
 *.xlsx
 *.txt
+*.dump
+//dump/
