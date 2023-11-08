@@ -24,17 +24,25 @@ def verify_password(username, password):
 def index():
     form : UploadForm = UploadForm()
     if request.method == 'POST': # and form.validate_on_submit():
-        return __report(form.date_purpose, form.is_archi.data)
+        options = __get_options(form)
+        return __report(form.date_purpose, **options)
     return render_template('upload_multi.html', title='Отчеты', form=form)
 
-def __report(date_purpose: DateField, is_archi: bool = False):
+def __get_options(form) -> dict:
+    names = [a for a in dir(form) if a.startswith('option_')]
+    options = dict()
+    for name in names:
+        options.setdefault(name, vars(form)[name].data)
+    return options
+
+def __report(date_purpose: DateField, **options):
     files = __upload_file()
     if files:
         if date_purpose.raw_data[0]:
             date_p = datetime.strptime(date_purpose.raw_data[0],"%Y-%m-%d").date()
         else:
             date_p = None            
-        report = Calc(files,  date_p, is_archi)
+        report = Calc(files,  date_p, **options)
         return __download_file(report.run())
     return redirect('/')
 

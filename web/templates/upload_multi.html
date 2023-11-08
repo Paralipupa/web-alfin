@@ -1,19 +1,41 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Расчет</h1>
-  <p>Выберите необходимые файлы для расчета</p>
-  <form action="" method="POST" enctype="multipart/form-data">
-    <div>{{ form.date_purpose.label }}</div>
-    <div>{{form.date_purpose (class= "datepicker")}}</div>
-    <div>{{ form.hidden_tag() }}</div>
-    <div>
-      <input type="file" name="file" multiple />
-    </div><br/>
-    
-    <div>
-      <input type="submit" value="Выполнить" />
-      {{ form.is_archi }}(Archi)
-    </div>
-  </form>
+<h1>Расчет</h1>
+<p>Выберите необходимые файлы для расчета</p>
+<form action="" method="POST" enctype="multipart/form-data">
+  <table>
+    <row>
+      <td>
+        <div>{{ form.date_purpose.label }}</div>
+        <div>{{form.date_purpose (class= "datepicker")}}</div>
+        <div>{{ form.hidden_tag() }}</div>
+        <div>
+        </br>
+          <input type="submit" value="Выполнить" />
+          {{ form.option_is_archi }}(Archi)
+        </div>
+      <td>
+        <div>
+          {{ form.option_weighted_average }}(ср.взвешенная)
+        </div>
+        <div>
+          {{ form.option_reserve }}(резерв)
+        </div>
+        <div>
+          {{ form.option_handle }}(операции вручную)
+        </div>
+        <div>
+          {{ form.option_cb}}(ЦБ)
+        </div>
+      </td>
+      <td>
+        <div>
+          <input type="file" name="file" multiple />
+        </div>        
+
+      </td>
+    </row>
+  </table>
+</form>
 {% endblock %}
