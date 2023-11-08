@@ -21,5 +21,20 @@
             "jinja": true,
             "justMyCode": true
         },
+        {
+            "name": "Attach",
+            "type": "python",
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 5001
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "."
+                }
+            ]
+        },
     ]
 }
