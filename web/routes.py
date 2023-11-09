@@ -26,7 +26,7 @@ def index():
     if request.method == 'POST': # and form.validate_on_submit():
         options = __get_options(form)
         return __report(form.date_purpose, **options)
-    return render_template('upload_multi.html', title='Отчеты', form=form)
+    return render_template('upload_multi.html', title='Отчеты', form=form, files = request.files)
 
 def __get_options(form) -> dict:
     names = [a for a in dir(form) if a.startswith('option_')]
