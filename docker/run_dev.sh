@@ -4,7 +4,7 @@ cd $DIR/..
 
 docker-compose -f docker/docker-compose.dev.yml down
 docker rmi $(docker images -aq)
-docker system prune -y
-docker-compose -f docker/docker-compose.dev.yml up -d
+yes | docker system prune
+docker-compose -f docker/docker-compose.dev.yml up -d --build
 
 
