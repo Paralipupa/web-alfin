@@ -11,29 +11,54 @@
         <div>{{form.date_purpose (class= "datepicker")}}</div>
         <div>{{ form.hidden_tag() }}</div>
         <div>
-        </br>
+          </br>
+          <input type="file" name="file" multiple />
+          <!-- {{ files }} -->
+        </div>
+        <div>
+          </br>
           <input type="submit" value="Выполнить" />
           {{ form.option_is_archi }}(Archi)
+          </br>
+          {{ error }}
         </div>
       <td>
         <div>
-          {{ form.option_weighted_average }}(ср.взвешенная)
-        </div>
-        <div>
-          {{ form.option_reserve }}(резерв)
+          {{ form.option_clients }}(Общий)
         </div>
         <div>
           {{ form.option_handle }}(операции вручную)
         </div>
         <div>
-          {{ form.option_cb}}(ЦБ)
+          </br>
+          {{ form.option_weighted_average }}(ср.взвешенная)
+        </div>
+        <div>
+          {{ form.option_kategory }}(категория)
+        </div>
+        <div>
+          {{ form.option_reserve }}(резерв)
         </div>
       </td>
       <td>
         <div>
-          <input type="file" name="file" multiple />
-          <!-- {{ files }} -->
-        </div>        
+          </br>
+          </br>
+          </br>
+          {{ form.option_cb_common}}(ЦБ Общий)
+        </div>
+        <div>
+          {{ form.option_cb_kassa}}(ЦБ касса)
+        </div>
+        <div>
+          {{ form.option_cb_rs}}(ЦБ рас.счет)
+        </div>
+      </td>
+      <td>
+      </td>
+    </row>
+    <row>
+      <td colspan="5">
 
       </td>
     </row>
