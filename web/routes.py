@@ -49,7 +49,9 @@ def __report(form: UploadForm, **options):
             date_p = None
         report = Calc(files, date_p, **options)
         return __download_file(report.run())
-    return render_template("upload_multi.html", title="Отчеты", form=form, error='файлы не выбраны')
+    return render_template(
+        "upload_multi.html", title="Отчеты", form=form, error="файлы не выбраны"
+    )
 
 
 def __upload_file() -> str:
