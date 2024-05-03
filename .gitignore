@@ -3,6 +3,7 @@
 .venv/*
 upload/*
 download/*
+clients/*
 *.zip
 output/*
 *.xls
